@@ -1,7 +1,0 @@
-.env
-*.log
-*.dump
-.DS_Store
-~$*
-.vscode/
-.idea/

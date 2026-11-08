@@ -33,28 +33,23 @@ Base de datos relacional en **PostgreSQL 16** para gestionar propiedades en alqu
 │   └── 05_pruebas_integridad.sql        # Pruebas de las reglas de negocio
 ├── docs/
 │   ├── Informe_Fin_Unidad1.docx         # Informe entregado
-│   └── diagramas/                       # PNG y fuentes Graphviz (.dot)
-├── scripts/setup.sh                     # Crea la BD y carga todo en orden
-├── docker-compose.yml                   # PostgreSQL 16 listo con el esquema
-├── LICENSE
+│   └── diagramas/                       # PNG del E-R y del modelo relacional, más sus fuentes .dot
 └── README.md
 ```
 
 ## Cómo ejecutarlo
 
-**Opción A: PostgreSQL local**
+Requiere PostgreSQL 16 (con la extensión `btree_gist`, incluida en la instalación estándar).
+
 ```bash
-./scripts/setup.sh alquiler_db
+createdb alquiler_db
+psql -d alquiler_db -f sql/01_ddl.sql
+psql -d alquiler_db -f sql/02_funciones_triggers_vistas.sql
+psql -d alquiler_db -f sql/03_datos.sql
 psql -d alquiler_db -f sql/04_consultas.sql
 ```
 
-**Opción B: Docker**
-```bash
-docker compose up -d
-docker compose exec db psql -U postgres -d alquiler_db -f /dev/stdin < sql/04_consultas.sql
-```
-
-Orden de ejecución manual: `01` → `02` → `03` (las tablas `PRECIO_ESPECIAL` deben cargarse antes que `RESERVA`, ya incluido en `03`).
+Los scripts deben ejecutarse en ese orden (`01` → `02` → `03`).
 
 ## Resultados esperados de las consultas
 
@@ -65,7 +60,3 @@ Orden de ejecución manual: `01` → `02` → `03` (las tablas `PRECIO_ESPECIAL`
 | 3 | ∩ | Ana Calderón y Valeria Ordóñez |
 | 4 | ÷ | Cabaña Vilcabamba, Casa de Playa Montañita, Casa Campestre Zamora |
 | 5 | γ | María Torres 645.00 (4.00) · Carlos Andrade 510.00 (4.33) |
-
-## Licencia
-
-MIT

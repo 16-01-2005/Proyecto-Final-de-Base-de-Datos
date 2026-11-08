@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: alquiler_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
+    volumes:
+      # Los scripts 01, 02 y 03 se ejecutan en orden alfabético al crear el contenedor
+      - ./sql/01_ddl.sql:/docker-entrypoint-initdb.d/01_ddl.sql:ro
+      - ./sql/02_funciones_triggers_vistas.sql:/docker-entrypoint-initdb.d/02_funciones_triggers_vistas.sql:ro
+      - ./sql/03_datos.sql:/docker-entrypoint-initdb.d/03_datos.sql:ro

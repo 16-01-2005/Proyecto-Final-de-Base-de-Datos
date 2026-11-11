@@ -113,7 +113,7 @@ La Figura 2 muestra el diagrama relacional con los tipos de datos sugeridos (PK 
 
 <img src="diagramas/modelo_relacional.png" alt="Modelo relacional" width="900">
 
-***Figura 2. Modelo relacional del sistema de Gestión de Alquiler de Propiedades (generado con Graphviz).***
+***Figura 2. Modelo relacional del sistema de Gestión de Alquiler de Propiedades (elaborado con draw.io).***
 
 </div>
 

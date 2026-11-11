@@ -40,7 +40,7 @@ Base de datos relacional en **PostgreSQL 16** para gestionar propiedades en alqu
 ├── docs/
 │   ├── INFORME.md                       # Informe de fin de unidad (versión web)
 │   ├── Informe_Fin_Unidad1.docx         # Informe entregado
-│   └── diagramas/                       # PNG del E-R y relacional, fuentes .dot y .drawio
+│   └── diagramas/                       # PNG del E-R y relacional, fuentes editables .drawio
 └── README.md
 ```
 

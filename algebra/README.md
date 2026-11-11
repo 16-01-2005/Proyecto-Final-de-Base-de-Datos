@@ -16,6 +16,14 @@ q1_futuras = σ (estado == 'CONFIRMADA' and str(fecha_inicio) > '2026-11-07') (r
 consulta1 = π id_reserva, titulo, huesped, anfitrion, fecha_inicio, fecha_fin, precio_total (q1_futuras ⋈ q1_prop ⋈ q1_huesped ⋈ q1_anfitrion)
 ```
 
+<div align="center">
+
+<img src="img/consulta1.png" alt="Resultado de la consulta 1" width="640">
+
+***Figura 1. Resultado de la consulta 1.***
+
+</div>
+
 ## Consulta 2 — Diferencia (−)
 
 Propiedades con capacidad para al menos 4 personas que no tienen reservas pendientes o confirmadas que se solapen con el rango del 20 al 23 de noviembre de 2026.
@@ -25,6 +33,14 @@ q2_r1 = π id_propiedad (σ capacidad_maxima >= 4 (propiedad))
 q2_r2 = π id_propiedad (σ ((estado == 'PENDIENTE' or estado == 'CONFIRMADA') and str(fecha_inicio) < '2026-11-23' and str(fecha_fin) > '2026-11-20') (reserva))
 consulta2 = π titulo, ciudad, precio_base_noche (propiedad ⋈ (q2_r1 - q2_r2))
 ```
+
+<div align="center">
+
+<img src="img/consulta2.png" alt="Resultado de la consulta 2" width="640">
+
+***Figura 2. Resultado de la consulta 2.***
+
+</div>
 
 ## Consulta 3 — Intersección (∩)
 
@@ -37,6 +53,14 @@ q3_g2 = π id_huesped (σ id_anfitrion == 2 and estado != 'CANCELADA' (q3_rp))
 consulta3 = π id_usuario, nombre, apellido (usuario ⋈ ρ id_huesped➡id_usuario (q3_g1 ∩ q3_g2))
 ```
 
+<div align="center">
+
+<img src="img/consulta3.png" alt="Resultado de la consulta 3" width="640">
+
+***Figura 3. Resultado de la consulta 3.***
+
+</div>
+
 ## Consulta 4 — División (÷)
 
 Propiedades que ofrecen todos los servicios requeridos: WiFi, Piscina y Estacionamiento.
@@ -45,6 +69,14 @@ Propiedades que ofrecen todos los servicios requeridos: WiFi, Piscina y Estacion
 q4_s = π id_servicio (σ (nombre == 'WiFi' or nombre == 'Piscina' or nombre == 'Estacionamiento') (servicio))
 consulta4 = π id_propiedad, titulo, ciudad (propiedad ⋈ (propiedad_servicio ÷ q4_s))
 ```
+
+<div align="center">
+
+<img src="img/consulta4.png" alt="Resultado de la consulta 4" width="640">
+
+***Figura 4. Resultado de la consulta 4.***
+
+</div>
 
 ## Consulta 5 — Reunión de cuatro relaciones y selección
 
@@ -57,3 +89,11 @@ q5_comp = σ estado == 'COMPLETADA' (reserva)
 q5_cal = σ calificacion >= 4 (π id_reserva, calificacion (resena))
 consulta5 = π anfitrion, titulo, id_reserva, precio_total, calificacion (q5_comp ⋈ q5_cal ⋈ q5_prop ⋈ q5_anfitrion)
 ```
+
+<div align="center">
+
+<img src="img/consulta5.png" alt="Resultado de la consulta 5" width="640">
+
+***Figura 5. Resultado de la consulta 5.***
+
+</div>

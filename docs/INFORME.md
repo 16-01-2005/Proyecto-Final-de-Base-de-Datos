@@ -442,6 +442,14 @@ ORDER BY r.fecha_inicio;
 
 **Resultado esperado:** 4 reservas ordenadas por fecha de inicio: la reserva 12 (Suite Cuenca Histórica, Sofía Jaramillo, anfitriona María Torres, 165.00), la 2 (Cabaña Vilcabamba, Ana Calderón, anfitrión Carlos Andrade, 260.00), la 10 (Departamento Centro Loja, Valeria Ordóñez, Carlos Andrade, 120.00) y la 5 (Casa de Playa Montañita, Valeria Ordóñez, María Torres, 720.00). La reserva 9 no aparece porque está PENDIENTE.
 
+<div align="center">
+
+<img src="resultados/consulta1.png" alt="Resultado de la consulta 1" width="640">
+
+***Figura 3. Resultado de la consulta 1.***
+
+</div>
+
 ### Consulta 2 — Diferencia (−) y verificación de solapamiento: propiedades disponibles
 
 **Descripción:** encontrar las propiedades con capacidad para al menos 4 personas que están libres del 20 al 23 de noviembre de 2026. Una reserva activa ocupa ese rango si cumple la condición de solapamiento fecha_inicio < 2026-11-23 y fecha_fin > 2026-11-20. Las propiedades disponibles son todas las que cumplen la capacidad menos las que tienen una reserva solapada.
@@ -471,6 +479,14 @@ WHERE p.capacidad_maxima >= 4
 ```
 
 **Resultado esperado:** 3 propiedades disponibles: Departamento Centro Loja (40.00), Casa de Playa Montañita (120.00) y Casa Campestre Zamora (80.00). La Cabaña Vilcabamba tiene capacidad suficiente pero queda excluida porque su reserva 2 (20 al 24 de noviembre) se solapa con el rango consultado.
+
+<div align="center">
+
+<img src="resultados/consulta2.png" alt="Resultado de la consulta 2" width="640">
+
+***Figura 4. Resultado de la consulta 2.***
+
+</div>
 
 ### Consulta 3 — Intersección (∩)
 
@@ -504,6 +520,14 @@ ORDER BY u.id_usuario;
 
 **Resultado esperado:** 2 usuarios, Ana Calderón (id 4) y Valeria Ordóñez (id 8), únicos huéspedes presentes en ambos conjuntos.
 
+<div align="center">
+
+<img src="resultados/consulta3.png" alt="Resultado de la consulta 3" width="640">
+
+***Figura 5. Resultado de la consulta 3.***
+
+</div>
+
 ### Consulta 4 — División (÷)
 
 **Descripción:** encontrar las propiedades que ofrecen todos los servicios de una lista requerida (WiFi, Piscina y Estacionamiento). La división de PROPIEDAD_SERVICIO entre el conjunto de servicios requeridos devuelve las propiedades asociadas a todos ellos. En SQL se expresa con doble NOT EXISTS: no existe un servicio requerido que la propiedad no tenga.
@@ -531,6 +555,14 @@ WHERE NOT EXISTS (
 ```
 
 **Resultado esperado:** 3 propiedades: Cabaña Vilcabamba, Casa de Playa Montañita y Casa Campestre Zamora. El Departamento Centro Loja, la Suite Cuenca y el Loft La Floresta quedan fuera por no tener piscina.
+
+<div align="center">
+
+<img src="resultados/consulta4.png" alt="Resultado de la consulta 4" width="640">
+
+***Figura 6. Resultado de la consulta 4.***
+
+</div>
 
 ### Consulta 5 — Agrupamiento y funciones de agregación (γ) con reunión de cuatro tablas
 
@@ -571,6 +603,14 @@ ORDER BY ingresos_totales DESC;
 ```
 
 **Resultado esperado:** 2 filas. María Torres: 2 reservas completadas, 645.00 de ingresos y calificación promedio 4.00. Carlos Andrade: 3 reservas completadas, 510.00 de ingresos y calificación promedio 4.33. Pedro Valarezo (240.00) queda excluido por la condición HAVING.
+
+<div align="center">
+
+<img src="resultados/consulta5.png" alt="Resultado de la consulta 5" width="640">
+
+***Figura 7. Resultado de la consulta 5.***
+
+</div>
 
 
 ---

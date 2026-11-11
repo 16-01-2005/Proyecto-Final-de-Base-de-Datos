@@ -32,7 +32,8 @@ Base de datos relacional en **PostgreSQL 16** para gestionar propiedades en alqu
 ```
 .
 ├── sql/
-│   ├── 01_ddl.sql                       # Tablas y restricciones
+│   ├── mysql/01_tablas_mysql.sql        # Versión MySQL 8: tablas y triggers anti-solape
+│   ├── 01_ddl.sql                       # Tablas y restricciones (PostgreSQL)
 │   ├── 02_funciones_triggers_vistas.sql # Función de precio, trigger, índices, vistas
 │   ├── 03_datos.sql                     # Datos de ejemplo (DML)
 │   ├── 04_consultas.sql                 # Consultas de álgebra relacional en SQL

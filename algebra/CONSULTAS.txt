@@ -1,0 +1,29 @@
+CONSULTAS 
+CONSULTA 1 
+q1_huesped = ρ id_usuario➡id_huesped, nombre➡huesped (π id_usuario, nombre (usuario))
+q1_anfitrion = ρ id_usuario➡id_anfitrion, nombre➡anfitrion (π id_usuario, nombre (usuario))
+q1_prop = π id_propiedad, id_anfitrion, titulo (propiedad)
+q1_futuras = σ (estado == 'CONFIRMADA' and str(fecha_inicio) > '2026-11-07') (reserva)
+consulta1 = π id_reserva, titulo, huesped, anfitrion, fecha_inicio, fecha_fin, precio_total (q1_futuras ⋈ q1_prop ⋈ q1_huesped ⋈ q1_anfitrion)
+
+CONSULTA 2 
+q2_r1 = π id_propiedad (σ capacidad_maxima >= 4 (propiedad))
+q2_r2 = π id_propiedad (σ ((estado == 'PENDIENTE' or estado == 'CONFIRMADA') and str(fecha_inicio) < '2026-11-23' and str(fecha_fin) > '2026-11-20') (reserva))
+consulta2 = π titulo, ciudad, precio_base_noche (propiedad ⋈ (q2_r1 - q2_r2))
+
+CONSULTA  3 
+q3_rp = reserva ⋈ π id_propiedad, id_anfitrion (propiedad)
+q3_g1 = π id_huesped (σ id_anfitrion == 1 and estado != 'CANCELADA' (q3_rp))
+q3_g2 = π id_huesped (σ id_anfitrion == 2 and estado != 'CANCELADA' (q3_rp))
+consulta3 = π id_usuario, nombre, apellido (usuario ⋈ ρ id_huesped➡id_usuario (q3_g1 ∩ q3_g2))
+
+CONSULTA 4 
+q4_s = π id_servicio (σ (nombre == 'WiFi' or nombre == 'Piscina' or nombre == 'Estacionamiento') (servicio))
+consulta4 = π id_propiedad, titulo, ciudad (propiedad ⋈ (propiedad_servicio ÷ q4_s))
+
+CONSULTA  5 
+q5_anfitrion = ρ id_usuario➡id_anfitrion, nombre➡anfitrion (π id_usuario, nombre (usuario))
+q5_prop = π id_propiedad, id_anfitrion, titulo (propiedad)
+q5_comp = σ estado == 'COMPLETADA' (reserva)
+q5_cal = σ calificacion >= 4 (π id_reserva, calificacion (resena))
+consulta5 = π anfitrion, titulo, id_reserva, precio_total, calificacion (q5_comp ⋈ q5_cal ⋈ q5_prop ⋈ q5_anfitrion)

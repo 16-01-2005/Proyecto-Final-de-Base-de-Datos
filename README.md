@@ -7,7 +7,7 @@ Docente: Edwin René Guamán Quinche · Autor: Ricardo Mathias Ochoa Armijos
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Unidad](https://img.shields.io/badge/Unidad-1-2da44e?style=for-the-badge)
 
-📄 **[Leer el informe completo de fin de unidad →](docs/INFORME.md)**
+📄 **[Leer el informe completo de fin de unidad →](docs/INFORME.md)** · 🧮 **[Consultas en álgebra relacional →](algebra/README.md)**
 
 Base de datos relacional en **PostgreSQL 16** para gestionar propiedades en alquiler temporal (cabañas, departamentos, casas de playa), con reservas **que nunca se solapan**, tarifas por temporada, pagos y reseñas.
 
@@ -37,6 +37,9 @@ Base de datos relacional en **PostgreSQL 16** para gestionar propiedades en alqu
 │   ├── 03_datos.sql                     # Datos de ejemplo (DML)
 │   ├── 04_consultas.sql                 # Consultas de álgebra relacional en SQL
 │   └── 05_pruebas_integridad.sql        # Pruebas de las reglas de negocio
+├── algebra/
+│   ├── README.md                        # Consultas en álgebra relacional (notación ejecutable)
+│   └── CONSULTAS.txt                    # Texto original de las consultas
 ├── docs/
 │   ├── INFORME.md                       # Informe de fin de unidad (versión web)
 │   ├── Informe_Fin_Unidad1.docx         # Informe entregado
